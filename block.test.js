@@ -28,7 +28,7 @@ describe("Block", () => {
         //$ Funções estáticas são convenientes quando não precisa usar ou mudar dados de uma instância específica de uma classe, mas sim de uma classe em si.
         const genesisBlock = Block.genesis();
 
-        console.log('genesisBlock', genesisBlock);
+        console.log("genesisBlock", genesisBlock);
 
         it("returns a Block instance", () => {
             expect(genesisBlock instanceof Block).toBe(true);
@@ -37,5 +37,27 @@ describe("Block", () => {
         it("returns the genesis data", () => {
             expect(genesisBlock).toEqual(GENESIS_DATA);
         });
+    });
+
+    describe("mineBlock", () => {
+        const lastBlock = Block.genesis();
+        const data = "mined data";
+        const minedBlock = Block.mineBlock({ lastBlock, data });
+
+        it("returns a Block instance", () => {
+            expect(minedBlock instanceof Block).toBe(true);
+        });
+
+        it("sets the `lastHash` to be the `hash` of the lastBlock", () => {
+            expect(minedBlock.lastHash).toEqual(lastBlock.hash);
+        });
+
+        it("sets the `data`", () => {
+            expect(minedBlock.data).toEqual(data);
+        });
+
+        it("sets a `timestamp`", () => {
+            expect(minedBlock).not.toEqual(undefined)
+        })
     });
 });
