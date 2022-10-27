@@ -1,20 +1,12 @@
 const Block = require("./block");
 const { GENESIS_DATA } = require("./config");
+const cryptoHash  = require("./crypto-hash")
 
 describe("Block", () => {
     const timestamp = "a-date";
     const lastHash = "foo-hash";
     const hash = "bar-hash";
     const data = ["blockchain", "data"];
-
-    //@ Se a chave no valor é a mesma que o objeto, pode-se usar sintaxe curta.
-    // const block = new Block({
-    //     timestamp: timestamp,
-    //     lastHash: lastHash,
-    //     hash: hash,
-    //     data: data,
-    // });
-
     const block = new Block({ timestamp, lastHash, hash, data });
 
     it("has a timestamp, lastHash, hash, data, and a property", () => {
@@ -25,7 +17,6 @@ describe("Block", () => {
     });
 
     describe("genesis()", () => {
-        //$ Funções estáticas são convenientes quando não precisa usar ou mudar dados de uma instância específica de uma classe, mas sim de uma classe em si.
         const genesisBlock = Block.genesis();
 
         it("returns a Block instance", () => {
@@ -56,6 +47,12 @@ describe("Block", () => {
 
         it("sets a `timestamp`", () => {
             expect(minedBlock).not.toEqual(undefined);
+        });
+
+        it("creates a SHA-256 `hash` based on the proper inputs", () => {
+            expect(minedBlock.hash).toEqual(
+                cryptoHash(minedBlock.timestamp, lastBlock.hash, data)
+            );
         });
     });
 });
