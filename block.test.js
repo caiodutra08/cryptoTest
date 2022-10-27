@@ -28,8 +28,6 @@ describe("Block", () => {
         //$ Funções estáticas são convenientes quando não precisa usar ou mudar dados de uma instância específica de uma classe, mas sim de uma classe em si.
         const genesisBlock = Block.genesis();
 
-        console.log("genesisBlock", genesisBlock);
-
         it("returns a Block instance", () => {
             expect(genesisBlock instanceof Block).toBe(true);
         });
@@ -57,7 +55,7 @@ describe("Block", () => {
         });
 
         it("sets a `timestamp`", () => {
-            expect(minedBlock).not.toEqual(undefined)
-        })
+            expect(minedBlock).not.toEqual(undefined);
+        });
     });
 });
