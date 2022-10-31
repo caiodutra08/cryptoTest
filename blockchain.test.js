@@ -13,9 +13,23 @@ describe("Blockchain", () => {
     });
 
     it("adds a new block to the chain", () => {
-        const newData = 'foo bar';
+        const newData = "foo bar";
         blockchain.addBlock({ data: newData });
-    
-        expect(blockchain.chain[blockchain.chain.length-1].data).toEqual(newData);
+
+        expect(blockchain.chain[blockchain.chain.length - 1].data).toEqual(
+            newData
+        );
+    });
+
+    describe("isValidChain()", () => {
+        describe("when the chain does not start with the genesis block", () => {
+            it("returns false", () => {});
+        });
+
+        describe("when the chain starts with the genesis block and have multiple blocks", () => {
+            describe("and a lastHash reference has changed", () => {
+                it("returns false", () => {});
+            });
+        });
     });
 });
