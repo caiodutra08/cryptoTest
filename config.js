@@ -1,10 +1,10 @@
 const Block = require("./block");
 
 const GENESIS_DATA = {
-    timestamp: 1,
-    lastHash: "-----",
-    hash: "hash-one",
-    data: [],
+	timestamp: 1,
+	lastHash: "-----",
+	hash: "hash-one",
+	data: [],
 };
 
 module.exports = { GENESIS_DATA };
