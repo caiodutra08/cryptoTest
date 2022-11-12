@@ -16,9 +16,9 @@ class Blockchain {
 	}
 
 	static isValidChain(chain) {
-		if (JSON.stringify(chain[0]) != JSON.stringify(Block.genesis())) {
+		//Two objects cant be === unless they are from the same obj instance
+		if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) 
 			return false;
-		}
 
 		for (let i = 1; i < chain.length; i++) {
 			const block = chain[i];
@@ -27,13 +27,17 @@ class Blockchain {
 
 			const { timestamp, lastHash, hash, data } = block;
 
-			if (lastHash != actualLastHash) return false;
+			if (lastHash != actualLastHash) 
+				return false;
 
 			const validatedHash = cryptoHash(timestamp, lastHash, data);
 
-			if (hash != validatedHash) return false;
+			if (hash != validatedHash) 
+				return false;
 		}
 
+		//try to transform to foreach???
+ 
 		return true;
 	}
 }
