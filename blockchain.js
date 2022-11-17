@@ -36,7 +36,7 @@ class Blockchain {
 				return false;
 		}
 
-		//try to transform to foreach???
+		//try to transform to foreach.
  
 		return true;
 	}
