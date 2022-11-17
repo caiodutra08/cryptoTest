@@ -79,10 +79,11 @@ describe("Blockchain", () => {
 		});
 
 		describe("when the new chain is longer", () => {
+			let dataInsert = ["Bears", "Beets", "Battlestar Galactica"];
 			beforeEach(() => {
-				newChain.addBlock({ data: "Bears" });
-				newChain.addBlock({ data: "Beets" });
-				newChain.addBlock({ data: "Battlestar Galactica" });
+				dataInsert.forEach((info) => {
+					newChain.addBlock({ data: info });
+				});
 			});
 
 			describe("and the chain is invalid", () => {
